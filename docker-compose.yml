@@ -9,7 +9,6 @@ services:
       - "9060:9060"
     volumes:
       - ./docker/parameters.yml:/server/app/config/parameters.yml:rw
-      - /var/log/php-docker:/var/log/php:rw
 #      - ./:/server:rw
   db:
     image: mysql:5.7
