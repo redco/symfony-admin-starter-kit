@@ -1,0 +1,34 @@
+version: '2'
+services:
+  admin-panel:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "9060:9060"
+    volumes:
+      - ./docker/parameters.yml:/server/app/config/parameters.yml:rw
+      - /var/log/php-docker:/var/log/php:rw
+#      - ./:/server:rw
+  db:
+    image: mysql:5.7
+    volumes:
+      - /var/lib/mysql-data1:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: symfony-admin-starter-kit
+      MYSQL_ROOT_PASSWORD: "symfony-admin-starter-kit"
+      MYSQL_USER: symfony-admin-starter-kit
+      MYSQL_PASSWORD: "symfony-admin-starter-kit"
+  nginx:
+    build: ./docker/nginx
+    depends_on:
+      - admin-panel
+    ports:
+      - 8000:80
+    restart: always
+    volumes_from:
+      - admin-panel
