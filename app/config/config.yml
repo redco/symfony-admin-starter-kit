@@ -88,8 +88,6 @@ sonata_admin:
             MASTER: MASTER
     title:      SymfonyAdmin
 #    title_logo: bundles/BUNDLE1/images/ico.png # Define your own logo here
-    templates:
-        layout:  ::standard_layout.html.twig # This overrides default template to cut out sonata copyright
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration

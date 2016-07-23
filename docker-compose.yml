@@ -13,7 +13,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - /var/lib/mysql-data1:/var/lib/mysql
+      - /var/lib/mysql-data:/var/lib/mysql
     restart: always
     ports:
       - "3306:3306"
